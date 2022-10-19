@@ -12,6 +12,9 @@ public class EventListener : MonoBehaviour
     public AudioSource audioSource {get{return GetComponent<AudioSource>();}}
     private SpVoice voice;
 
+    public Puntuacion puntuacion;
+    [SerializeField] GameObject puntuaciones;
+
     
     void Start()
     {
@@ -49,5 +52,14 @@ public class EventListener : MonoBehaviour
         } 
     }
 
-    
+    public void OnEnterPicture()
+    {
+        //gameObject.GetComponent<AudioSource>().PlayOneShot(soundBanana, 0.7f);
+        puntuacion.puntos++;
+		puntuaciones.GetComponent<Text>().text="Cuadros: " + puntuacion.puntos.ToString() + "/" + "1";
+    }
+    public void OnEnxitPicture()
+    {
+        Destroy(gameObject);
+    }
 }

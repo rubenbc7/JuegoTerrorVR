@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class Alfombras : MonoBehaviour
 {
-    private Renderer renderer;
+    private Material renderer;
     public GameObject player;
     public GameObject TeleportTo;
     public float offsetTP = 1.50f;
-    public float horizontaloffsetTP = 0f;
+    public float horizontaloffsetTP;
+    private Color _emissionColorValue;
+    private float _intensity;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = gameObject.GetComponent<Renderer>();
+        renderer = this.GetComponent<Renderer>().material;
+        _intensity = 0.25f;
+        renderer.SetVector("_EmissionColor", Color.red * _intensity);
+        player = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     // Update is called once per frame
@@ -24,12 +30,22 @@ public class Alfombras : MonoBehaviour
 
     public void OnEnter()
     {
-        
-        renderer.material.color = Color.red;
-        player.transform.position = (new Vector3(TeleportTo.transform.position.x + horizontaloffsetTP, TeleportTo.transform.position.y + offsetTP , TeleportTo.transform.position.z));;
+        _intensity = 1f;
+        renderer.SetVector("_EmissionColor", Color.white * _intensity);
+       // renderer.material.color = Color.red;
+        //player.transform.position = (new Vector3(TeleportTo.transform.position.x + horizontaloffsetTP, TeleportTo.transform.position.y + offsetTP , TeleportTo.transform.position.z));;
     }
+
+    public void PointerClick()
+    {
+        player.transform.position = (new Vector3(TeleportTo.transform.position.x + horizontaloffsetTP, TeleportTo.transform.position.y + offsetTP , TeleportTo.transform.position.z));;
+
+    }
+
     public void OnEnxit()
     {
-        renderer.material.color = Color.white;
+        //renderer.material.color = Color.white;
+        _intensity = 0.4f;
+        renderer.SetVector("_EmissionColor", Color.red * _intensity);
     }
 }

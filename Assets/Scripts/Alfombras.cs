@@ -30,7 +30,7 @@ public class Alfombras : MonoBehaviour
 
     public void OnEnter()
     {
-        _intensity = 1f;
+        _intensity = 0.8f;
         renderer.SetVector("_EmissionColor", Color.white * _intensity);
        // renderer.material.color = Color.red;
         //player.transform.position = (new Vector3(TeleportTo.transform.position.x + horizontaloffsetTP, TeleportTo.transform.position.y + offsetTP , TeleportTo.transform.position.z));;

@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
+    private Material renderer;
+    private Color _emissionColorValue;
+    private float _intensity;
 
     [System.Serializable]
     public class DoorGet 
@@ -27,7 +29,11 @@ public class Door : MonoBehaviour
 
    public bool door_in_use;
 
-
+    void Start() {
+        renderer = this.GetComponent<Renderer>().material;
+        _intensity = 0f;
+        renderer.SetVector("_EmissionColor", Color.red * _intensity);
+    }
 
     public void MoveMyDoor()
     {
@@ -73,6 +79,25 @@ public class Door : MonoBehaviour
 
 
 
+       public  void OnEnter()
+    {
+        _intensity = 0.7f;
+        renderer.SetVector("_EmissionColor", Color.white * _intensity);
+       // renderer.material.color = Color.red;
+        //player.transform.position = (new Vector3(TeleportTo.transform.position.x + horizontaloffsetTP, TeleportTo.transform.position.y + offsetTP , TeleportTo.transform.position.z));;
+    }
+
+    public void PointerClick()
+    {
+        ActionDoor();
+    }
+
+    public void OnEnxit()
+    {
+        //renderer.material.color = Color.white;
+        _intensity = 0f;
+        renderer.SetVector("_EmissionColor", Color.red * _intensity);
+    }
         public void ActionDoor()
         {
 

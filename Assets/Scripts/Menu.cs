@@ -29,7 +29,7 @@ public class Menu : MonoBehaviour
 
     public void PointerClick()
     {
-        SceneManager.LoadScene("office building");
+        SceneManager.LoadScene("officebuilding");
     }
 
     public void OnEnxit()

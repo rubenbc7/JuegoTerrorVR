@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class Menu : MonoBehaviour
 {
     public AudioSource audioSource {get{return GetComponent<AudioSource>();}}
     public AudioClip clip;
+    
     public Image panel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +35,8 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("officebuilding");
     }
 
-    public void OnEnxit()
+    public void OnExit()
     {
-        
+        panel.color = UnityEngine.Color.black;
     }
 }

@@ -18,6 +18,8 @@ public class Cuadro : MonoBehaviour
     public Puntuacion puntuacion;
     [SerializeField] GameObject puntuaciones;
 
+    [SerializeField] GameObject enemy;
+
     
     void Start()
     {
@@ -69,8 +71,9 @@ public class Cuadro : MonoBehaviour
     {
         puntuacion.puntos++;
 		puntuaciones.GetComponent<Text>().text="Cuadros: " + puntuacion.puntos.ToString() + "/" + "5";
-        
-        Destroy(gameObject);
+
+        gameObject.SetActive(false);
+        enemy.SetActive(true);
     }
 
     public void OnEnxitPicture()
